@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {SharedComponentsModule} from "./shared-components/shared-components.module";
+import { AutoFocusDirective } from './Directives/auto-focus.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AutoFocusDirective,
   ],
     imports: [
         BrowserModule,

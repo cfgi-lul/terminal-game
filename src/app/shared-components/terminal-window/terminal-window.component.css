@@ -51,3 +51,10 @@
 .expand {
   background-color: #5ac234;
 }
+
+.terminal-window{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: calc(100% - 20px);
+}

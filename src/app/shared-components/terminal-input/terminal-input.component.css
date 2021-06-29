@@ -1,0 +1,27 @@
+.input-wrapper {
+  height: 20px;
+  width: 100%;
+  color: #fff;
+}
+
+.input {
+  width: 100%;
+  background: border-box;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.input:focus {
+  outline: none !important;
+}
+
+.input-title {
+  white-space: nowrap;
+  margin-right: 10px;
+}
+
+.flex {
+  display: flex;
+}
