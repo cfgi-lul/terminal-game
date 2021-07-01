@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
+import {Observable} from "rxjs";
+import {TerminalLoggerService} from "../../services/terminal-logger.service";
 
 @Component({
   selector: 'app-terminal-view',
@@ -6,11 +8,10 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   styleUrls: ['./terminal-view.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TerminalViewComponent implements OnInit {
+export class TerminalViewComponent {
+  log: Observable<string[]>;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private terminalLoggerService: TerminalLoggerService) {
+    this.log = terminalLoggerService.log;
   }
-
 }

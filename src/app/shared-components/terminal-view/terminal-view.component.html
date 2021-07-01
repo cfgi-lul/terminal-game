@@ -1,1 +1,5 @@
-<p>terminal-view works!</p>
+<div class="terminal-view-wrapper">
+  <div *ngFor="let commond of (log | async)" class="command">
+    {{commond}}
+  </div>
+</div>

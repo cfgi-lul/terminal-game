@@ -2,6 +2,8 @@
   background: radial-gradient(circle, rgba(69, 255, 109, 1) 0%, rgba(17, 230, 255, 1) 100%);
   width: 100vw;
   height: 100vh;
+  margin: 0;
+  overflow: hidden;
 }
 
 .terminal {

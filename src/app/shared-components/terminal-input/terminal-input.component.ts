@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, ElementRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormBuilder, FormControl} from "@angular/forms";
+import {TerminalLoggerService} from "../../services/terminal-logger.service";
 
 @Component({
   selector: 'app-terminal-input',
@@ -7,13 +8,14 @@ import {FormBuilder, FormControl} from "@angular/forms";
   styleUrls: ['./terminal-input.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TerminalInputComponent implements OnInit {
+export class TerminalInputComponent {
   inputValue: FormControl;
-  constructor(private fb: FormBuilder, private elRef: ElementRef) {
+
+  constructor(private fb: FormBuilder,
+              private terminalLoggerService: TerminalLoggerService) {
     this.inputValue = this.fb.control('');
+    this.inputValue.valueChanges.subscribe(e => {
+      this.terminalLoggerService.logCommand(e);
+    })
   }
-
-  ngOnInit(): void {
-  }
-
 }
