@@ -1,6 +1,6 @@
 <div class="input-wrapper">
   <label class="flex">
     <span class="input-title">MacBook-Air: /user$</span>
-    <input type="text" [formControl]="inputValue" class="input" autoFocus>
+    <input (keydown.enter)="submitCommand()" type="text" [formControl]="inputValue" #input class="input" autoFocus>
   </label>
 </div>

@@ -8,7 +8,7 @@
   width: 100%;
   background: border-box;
   border: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', monospace;
   box-sizing: border-box;
   color: #fff;
 }
