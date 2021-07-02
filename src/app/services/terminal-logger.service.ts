@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
+import {CommandType} from "../enums/command-type";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,16 @@ export class TerminalLoggerService {
   }
 
   logCommand(command: string): void {
-    this._log$.next([...this._log$.value, command]);
+    let userToShow: string = 'MacBook-Air: /user$'
+    let terminalReplay: string = '';
+    if (command === 'ls') {
+      terminalReplay = CommandType.ls
+    } else {
+      userToShow = '-bash:';
+      terminalReplay = CommandType.noCommand;
+      // this._log$.next([...this._log$.value, command, `-bash: ${command}: ${terminalReplay}`]);
+    }
+
+    this._log$.next([...this._log$.value, `${command}`, `${userToShow} ${command}: ${terminalReplay}`]);
   }
 }
