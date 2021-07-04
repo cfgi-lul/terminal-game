@@ -20,15 +20,18 @@ export class TerminalLoggerService {
     let userToShow: string = 'MacBookAir:-/user$'
     let terminalReplay: string = '';
     if (command === 'ls') {
-      terminalReplay = 'rouge'
+      terminalReplay = '.. rouge'
       this._log$.next([...this._log$.value, `${userToShow}\xa0${command}`, `${terminalReplay}`]);
-    } else if (command.startsWith('cd ')) {
+    } else if (command.startsWith('cd ') || command === 'cd') {
       let navigateTo = command.split(' ')[1];
       switch (navigateTo) {
         case 'rouge':
           this.router.navigate(['rouge']).catch(err => console.error(err));
           break;
         case '..':
+          this.router.navigate(['']).catch(err => console.error(err));
+          break;
+        case '':
           this.router.navigate(['']).catch(err => console.error(err));
           break;
         default:

@@ -1,4 +1,25 @@
 <div class="terminal-wrapper">
-    <div class="title"><span>Terminal The Game</span></div>
-    <app-terminal-window class="terminal"></app-terminal-window>
+  <div class="title"><span>Terminal The Game</span></div>
+  <app-terminal-window class="terminal"></app-terminal-window>
+</div>
+<div *ngIf="!helpShownBefore" class="help-container">
+  <div (click)="closeHelp()" class="close-help">
+    <img alt="close" height="20" src="../assets/icons/ic_close-button.png" width="20"></div>
+  <h1>Help</h1>
+  <div class="short-description">
+    <h2>Short description</h2>
+    <p>This app was created for improving programming skills.</p>
+    <p>Here you can use some command of real unix terminal (ls, cd, help, etc.)</p>
+    <p>Actually here my <a class="link" href="https://ekaterinburg.hh.ru/resume/2cfa8527ff07ad1bc70039ed1f716c6a4d544a">cv
+      link</a> if that's matter</p>
+    <p>If there are some bugs with view pls use full hd 100% chrome view and 27inc monitor)) thx</p>
+  </div>
+  <div class="short-cuts">
+    <h2>Short cuts</h2>
+    <p>use "CTRL + /" to show help</p>
+  </div>
+  <div class="command">
+    <h2>Command line</h2>
+    <p>type "help" in command line to show sommands to use</p>
+  </div>
 </div>

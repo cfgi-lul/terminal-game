@@ -18,3 +18,27 @@
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
+.help-container{
+  background-color: #404040;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex; flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.link{
+  background-color: #e34243;
+}
+
+.close-help{
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
