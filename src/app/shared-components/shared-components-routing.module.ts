@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TerminalWindowComponent} from "./terminal-window/terminal-window.component";
+import {GameViewComponent} from "./game-view/game-view.component";
 
 const routes: Routes = [
-  // {path: '', component: TerminalWindowComponent},
-  {path: 'tasks/choose-word', component: TerminalWindowComponent},
-  {path: 'tasks', component: TerminalWindowComponent},
+  {path: 'rouge', component: GameViewComponent},
+  {path: '', component: TerminalWindowComponent},
 ];
 
 @NgModule({

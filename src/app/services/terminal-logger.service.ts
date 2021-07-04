@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {CommandType} from "../enums/command-type";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import {CommandType} from "../enums/command-type";
 export class TerminalLoggerService {
   private _log$: BehaviorSubject<Array<string>> = new BehaviorSubject(Array<string>());
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   get log(): Observable<Array<string>> {
@@ -16,16 +16,32 @@ export class TerminalLoggerService {
   }
 
   logCommand(command: string): void {
-    let userToShow: string = 'MacBook-Air: /user$'
+    command = command.trim();
+    let userToShow: string = 'MacBookAir:-/user$'
     let terminalReplay: string = '';
     if (command === 'ls') {
-      terminalReplay = CommandType.ls
+      terminalReplay = 'rouge'
+      this._log$.next([...this._log$.value, `${userToShow}\xa0${command}`, `${terminalReplay}`]);
+    } else if (command.startsWith('cd ')) {
+      let navigateTo = command.split(' ')[1];
+      switch (navigateTo) {
+        case 'rouge':
+          this.router.navigate(['rouge']).catch(err => console.error(err));
+          break;
+        case '..':
+          this.router.navigate(['']).catch(err => console.error(err));
+          break;
+        default:
+          userToShow = '‑bash:';
+          terminalReplay = 'No such file or directory';
+          break;
+      }
+      this._log$.next([...this._log$.value, `${userToShow}\xa0${command} ${terminalReplay}`]);
+    } else if (command === 'clear') {
+      this._log$.next([]);
     } else {
-      userToShow = '-bash:';
-      terminalReplay = CommandType.noCommand;
-      // this._log$.next([...this._log$.value, command, `-bash: ${command}: ${terminalReplay}`]);
+      terminalReplay = 'command not found';
+      this._log$.next([...this._log$.value, `${userToShow}\xa0${command}`, `‑bash:\xa0${command}: ${terminalReplay}`]);
     }
-
-    this._log$.next([...this._log$.value, `${command}`, `${userToShow} ${command}: ${terminalReplay}`]);
   }
 }

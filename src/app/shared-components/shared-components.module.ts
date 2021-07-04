@@ -6,13 +6,15 @@ import {SharedComponentsRoutingModule} from './shared-components-routing.module'
 import {TerminalInputComponent} from './terminal-input/terminal-input.component';
 import {TerminalViewComponent} from './terminal-view/terminal-view.component';
 import {TerminalWindowComponent} from './terminal-window/terminal-window.component';
+import { GameViewComponent } from './game-view/game-view.component';
 
 
 @NgModule({
   declarations: [
     TerminalWindowComponent,
     TerminalInputComponent,
-    TerminalViewComponent
+    TerminalViewComponent,
+    GameViewComponent
   ],
   exports: [
     TerminalWindowComponent
