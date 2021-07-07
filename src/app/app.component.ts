@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,13 @@ export class AppComponent {
   constructor() {
     this.helpShownBefore = JSON.parse(localStorage.getItem('help') as string);
     localStorage.setItem('help', 'true');
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.ctrlKey && event.shiftKey && event.code === "Slash") {
+      this.helpShownBefore = !this.helpShownBefore;
+    }
   }
 
   closeHelp() {

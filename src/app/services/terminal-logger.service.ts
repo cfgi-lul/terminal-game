@@ -19,7 +19,10 @@ export class TerminalLoggerService {
     command = command.trim();
     let userToShow: string = 'MacBookAir:-/user$'
     let terminalReplay: string = '';
-    if (command === 'ls') {
+    if (command === 'help') {
+      let terminalReplay = ['ls - show all you possibilities','cd - navigate to your chosen way','clear - clears you terminal']
+      this._log$.next([...this._log$.value, `${userToShow}\xa0${command}`, ...terminalReplay]);
+    } else if (command === 'ls') {
       terminalReplay = '.. rouge'
       this._log$.next([...this._log$.value, `${userToShow}\xa0${command}`, `${terminalReplay}`]);
     } else if (command.startsWith('cd ') || command === 'cd') {
