@@ -10,9 +10,12 @@
       <div class="flex-element"></div>
     </div>
 
-    <div class="terminal-window" (click)="focusOnInput($event)">
-      <app-terminal-view class="terminal-view" id="terminalScrollableBody"></app-terminal-view>
+    <div (click)="focusOnInput($event)" class="terminal-window">
+      <div class="terminal-view">
+        <router-outlet></router-outlet>
+      </div>
       <app-terminal-input [focus]="focusOnInputEvent$"></app-terminal-input>
     </div>
   </div>
 </div>
+
